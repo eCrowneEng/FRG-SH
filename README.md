@@ -18,19 +18,19 @@ While in theory the device is not tied to SimHub, this firmware makes emulates a
 - D1 Mini (ESP8266)
 
 The ESP866 was selected over any Arduino board due to cost, form factor available memory AND performance. In the past I tested a similar meter stand alone framework and the affordable Arduino boards struggled to keep up, while the ESP8266 was passed with flying colors.
-The SSH1106 was picked due to its availability, lower memory usage, size and cost.
-Given that SimHub doesn't support the ESP board nor the SSH1106 driver for the screen, this repository exists.
+The SSH1106 screen was picked due to its availability, size and cost.
+Given that SimHub doesn't support neither the ESP board nor the SSH1106 driver for the screen, this repository exists.
 
 ## Circuit
-This firmware assumes that the RGB ring is connected to D6 of the D1 Mini.
-The screen's SCL connects to D1 and SDA to D2
+This firmware assumes that the RGB ring is connected to `D6` pin of the D1 Mini board.
+The screen's `SCL` connects to `D1` and `SDA` to `D2`
 
 ## Code
 The source code for the firmware is meant to be opened with [Platformio (VS Code + Platformio Plugin)](https://platformio.org/platformio-ide) rather than Arduino IDE.
 
 The reason for this is because [Platformio](https://platformio.org/) is a much better editor, dependency management is superior, and many more reasons. [Here's a good and very long read about it](https://nerdytechy.com/platformio-vscode-vs-arduino-ide/).
 
-However I won't force you to use it, if you just want to upload the firwmare, Download the `.bin` file you need from the [release section](https://github.com/eCrowneEng/FRG-SH/releases).
+However I won't force you to use it if you just want to upload the firwmare, Download the `.bin` file you need from the [release section](https://github.com/eCrowneEng/FRG-SH/releases).
 See the TL:DR; section above with the suggested method of upload. It should take you 5 minutes.
 
 ## Known issues
