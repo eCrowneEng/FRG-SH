@@ -1,5 +1,6 @@
 # FRG-SH
 FlexRingGauge firwmare for using it with SimHub. 
+
 For the full project join the Discord: https://discord.gg/JrG2JAtY 
 
 ## TL:DR; How do I upload this?
