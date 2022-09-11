@@ -10,7 +10,7 @@ FlexRingGauge firwmare for using it with SimHub
 ## About
 FlexRingGauge is a device that aims to be a meter with a display and a configurable sweep to display measurements.
 
-While in theory the device is not tied to SimHub, this firmware makes emulates an Arduino board that has been flashed with the SimHub firmware.
+While in theory the device is not tied to SimHub, this firmware emulates an Arduino board that has been flashed with the SimHub firmware.
 
 ## Required components
 - 24 RGB LED Ring - aka "NeoPixel"
