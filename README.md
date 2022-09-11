@@ -26,7 +26,7 @@ This firmware assumes that the RGB ring is connected to `D6` pin of the D1 Mini 
 The screen's `SCL` connects to `D1` and `SDA` to `D2`
 
 ## Code
-The source code for the firmware is meant to be opened with [Platformio (VS Code + Platformio Plugin)](https://platformio.org/platformio-ide) rather than Arduino IDE.
+The source code for the firmware is meant to be opened with [Platformio (VS Code + Platformio Plugin)](https://platformio.org/platformio-ide) rather than Arduino IDE. It also means that the entry point for the code is in `src/main.cpp` rather than an `.ino` file, but don't worry, it's the same on the inside.
 
 The reason for this is because [Platformio](https://platformio.org/) is a much better editor, dependency management is superior, and many more reasons. [Here's a good and very long read about it](https://nerdytechy.com/platformio-vscode-vs-arduino-ide/).
 
