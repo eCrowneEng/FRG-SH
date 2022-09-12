@@ -1,7 +1,9 @@
 # FRG-SH
 FlexRingGauge firwmare for using it with SimHub. 
 
-For the full project join the Discord: https://discord.gg/JrG2JAtY 
+For the full project join the Discord:
+
+https://discord.gg/JrG2JAtY - Build instructions, STLs, etc.
 
 ## TL:DR; How do I upload this?
 - Download a [release](https://github.com/marcelstoer/nodemcu-pyflasher/releases) from here [NodeMCU PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher)
