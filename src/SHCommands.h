@@ -47,7 +47,8 @@ void Command_DeviceName()
 
 void Command_UniqueId()
 {
-	FlowSerialPrint(DEVICE_UNIQUE_ID);
+	auto id = getUniqueId();
+	FlowSerialPrint(id);
 	FlowSerialPrint("\n");
 	FlowSerialFlush();
 }

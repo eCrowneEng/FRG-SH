@@ -37,7 +37,7 @@ private:
 
 public:
 
-	virtual void init() = 0;
+	virtual void init(bool animate) = 0;
 
 	virtual void Display(int idx) = 0;
 

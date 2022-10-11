@@ -18,17 +18,19 @@ class SHGLCD_I2COLED : public SHGLCD_Base
 {
 public:
 
-	void init() {
+	void init(bool animate) {
 		glcd1.begin(i2c_Address, true);
 		glcd1.clearDisplay();
-		glcd1.setFont();
-		glcd1.setTextSize(2);
-		glcd1.setTextColor(SH110X_WHITE);
-		glcd1.setCursor(15, 15);
-		glcd1.print("FlexRing");
-		glcd1.setCursor(35, 35);
-		glcd1.print("Gauge");
-		glcd1.display();
+		if (animate) {
+			glcd1.setFont();
+			glcd1.setTextSize(2);
+			glcd1.setTextColor(SH110X_WHITE);
+			glcd1.setCursor(15, 15);
+			glcd1.print("FlexRing");
+			glcd1.setCursor(35, 35);
+			glcd1.print("Gauge");
+			glcd1.display();
+		}
 	}
 
 	void Display(int idx) {

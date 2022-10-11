@@ -1,7 +1,7 @@
 #ifndef __SHRGBLEDSNEOPIXELFASTLED_H__
 #define __SHRGBLEDSNEOPIXELFASTLED_H__
 #define FASTLED_ALLOW_INTERRUPTS 0
-
+#define FASTLED_INTERRUPT_RETRY_COUNT 0
 
 #include <Arduino.h>
 #include "SHRGBLedsBase.h"
@@ -20,26 +20,31 @@ private:
 	unsigned long lastRead = 0;
 public:
 
-	void begin(int maxLeds, int righttoleft, bool testMode) {
+	void begin(int maxLeds, int righttoleft, bool animate) {
 		SHRGBLedsBase::begin(maxLeds, righttoleft);
 		FastLED.setCorrection(TypicalLEDStrip);
+		// This is set to 450 milliamps because that's what the USB port will be able to supply,
+		//  even though the rgb ring can use much more (with diminishing returns in terms of brightness
+		//  after a certain point) 
 		FastLED.setMaxPowerInVoltsAndMilliamps(5, 450);
 		FastLED.addLeds<NEOPIXEL, WS2812B_DATAPIN>(SHRGBLedsNeoPixelFastLeds_leds, maxLeds);
 
-		if (testMode > 0) {
-			for (int i = 0; i < maxLeds; i++) {
-				setPixelColor(i, 10, 0, 0);
-			}
+		if (animate) {
+			fillColor(10, 0, 0);
+			show();
 		}
-		FastLED.show();
-		FastLED.show(); // needs duplicate in the ESP boards for timing purposes
+	}
+
+	void fillColor(uint8_t r, uint8_t g, uint8_t b) {
+		for (int i = 0; i < WS2812B_RGBLEDCOUNT; i++) {
+			setPixelColor(i, r, g, b);
+		}
 	}
 
 	void show() {
 		FastLED.show();
 	}
 
-protected:
 	void setPixelColor(uint8_t lednumber, uint8_t r, uint8_t g, uint8_t b) {
 		// 0 for GRB, 
 		// 1 for RGB encoding
