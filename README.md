@@ -39,5 +39,4 @@ The reason for this is because [Platformio](https://platformio.org/) is a much b
 However I won't force you to use it if you just want to upload the firwmare, Download the `.bin` file you need from the [release section](https://github.com/eCrowneEng/FRG-SH/releases).
 See the TL:DR; section above with the suggested method of upload. It should take you 5 minutes.
 
-## Known issues
-- Sometimes, the first time you try to flash the firmware, the D1 Mini disappears from the COM port list. Try to resetting it 1 second before you click the "Flash NodeMCU" button, so that it can catch it before it disappears and keep it alive.
+
