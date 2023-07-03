@@ -18,7 +18,7 @@ While in theory the device is not tied to SimHub, this firmware emulates an Ardu
 
 ## Required components
 - 24 RGB LED Ring - aka "NeoPixel"
-- 1.3" OLED Screen with the SSH1106 driver that can be wired for I2C (usually these have 4 pins only)
+- 1.3" OLED Screen with the SH1106 driver that can be wired for I2C (usually these have 4 pins only)
 - D1 Mini (ESP8266)
 
 The ESP866 was selected over any Arduino board due to cost, form factor available memory AND performance. In the past I tested a similar meter stand alone framework and the affordable Arduino boards struggled to keep up, while the ESP8266 was passed with flying colors.
