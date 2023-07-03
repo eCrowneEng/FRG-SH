@@ -23,11 +23,11 @@ While in theory the device is not tied to SimHub, this firmware emulates an Ardu
 
 The ESP866 was selected over any Arduino board due to cost, form factor available memory AND performance. In the past I tested a similar meter stand alone framework and the affordable Arduino boards struggled to keep up, while the ESP8266 was passed with flying colors.
 The SSH1106 screen was picked due to its availability, size and cost.
-Given that SimHub doesn't support neither the ESP board nor the SSH1106 driver for the screen, this repository exists.
+Given that SimHub doesn't support neither the ESP board nor the SH1106 driver for the screen, this repository exists.
 
 ## Circuit
 This firmware assumes that the RGB ring is connected to `D6` pin of the D1 Mini board.
-The screen's `SCL` connects to `D1` and `SDA` to `D2`
+The screen's `SCL/SCK` connects to `D1` and `SDA` to `D2`
 
 <img src="https://raw.githubusercontent.com/eCrowneEng/FRG-SH/main/diagram.png" width="1000" />
 
