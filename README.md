@@ -28,7 +28,7 @@ Given that SimHub doesn't support neither the ESP board nor the SH1106 driver fo
 
 ## Circuit
 This firmware assumes that the RGB ring is connected to `D6` pin of the D1 Mini board.
-The screen's `SCL` connects to `D1` and `SDA` to `D2`
+The screen's `SCL/SCK` connects to `D1` and `SDA` to `D2`
 
 <img src="https://raw.githubusercontent.com/eCrowneEng/FRG-SH/main/diagram.png" width="1000" />
 
