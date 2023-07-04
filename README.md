@@ -16,13 +16,14 @@ FlexRingGauge is a device that aims to be a meter with a display and a configura
 
 While in theory the device is not tied to SimHub, this firmware emulates an Arduino board that has been flashed with the SimHub firmware.
 
-## Required components
+## Components
 - 24 RGB LED Ring - aka "NeoPixel"
 - 1.3" OLED Screen with the SH1106 driver that can be wired for I2C (usually these have 4 pins only)
 - D1 Mini (ESP8266)
+- (optional) 2 push buttons (Normally open)
 
 The ESP866 was selected over any Arduino board due to cost, form factor available memory AND performance. In the past I tested a similar meter stand alone framework and the affordable Arduino boards struggled to keep up, while the ESP8266 was passed with flying colors.
-The SSH1106 screen was picked due to its availability, size and cost.
+The SH1106 screen was picked due to its availability, size and cost.
 Given that SimHub doesn't support neither the ESP board nor the SH1106 driver for the screen, this repository exists.
 
 ## Circuit
