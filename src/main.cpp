@@ -48,7 +48,7 @@ SHRGBLedsNeoPixelFastLeds shRGBLedsWS2812B;
 #ifdef  INCLUDE_BUTTONS
 #define ENABLED_BUTTONS_COUNT 2 		// How many SimHub visible only buttons to add (no gamepad)
 #define BUTTON_PIN_1 D3         		// Button 1 Pin (to GND, not inverted)
-#define BUTTON_PIN_2 D0         		// Button 2 Pin (to GND, not inverted)
+#define BUTTON_PIN_2 D7         		// Button 2 Pin (to GND, not inverted)
 int BUTTON_PINS[] = { BUTTON_PIN_1, BUTTON_PIN_2 };
 SHButton button1, button2;
 SHButton* BUTTONS[] = { &button1, &button2 };
