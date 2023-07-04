@@ -16,7 +16,7 @@ void Command_SetBaudrate()
 
 void Command_ButtonsCount()
 {
-	FlowSerialWrite((byte)(0));
+	FlowSerialWrite((byte)(ENABLED_BUTTONS_COUNT));
 	FlowSerialFlush();
 }
 

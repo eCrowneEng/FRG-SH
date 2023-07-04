@@ -15,6 +15,7 @@
 #define LEDRING_SHIFT_BY_180_DEGREES 1  // If set to 1, uses an alternative mapping for leds that's shifted 180 degrees
 #define FASTLED_ESP8266_RAW_PIN_ORDER	// fastLED will try to guess your pin number if not set up and won't work
 #define LED_BUILTIN D4					// Pin number to activate to control the built in LED
+#define INCLUDE_BUTTONS                 // SimHub visible only buttons  (no gamepad)
 
 /** *****************************************
  * 
@@ -28,6 +29,8 @@
 #include <Wire.h>
 #include <FlowSerialRead.h>
 #include <SHRGBLedsNeoPixelFastLed.h>
+#include <SHButton.h>
+#include <SHDebouncer.h>
 
 #if PLUS > 0
 # include <plus.h>
@@ -41,13 +44,42 @@ unsigned long lastSerialActivity = 0;
 SHGLCD_I2COLED screen;
 SHRGBLedsNeoPixelFastLeds shRGBLedsWS2812B;
 
+
+#ifdef  INCLUDE_BUTTONS
+#define ENABLED_BUTTONS_COUNT 2 		// How many SimHub visible only buttons to add (no gamepad)
+#define BUTTON_PIN_1 D3         		// Button 1 Pin (to GND, not inverted)
+#define BUTTON_PIN_2 D0         		// Button 2 Pin (to GND, not inverted)
+int BUTTON_PINS[] = { BUTTON_PIN_1, BUTTON_PIN_2 };
+SHButton button1, button2;
+SHButton* BUTTONS[] = { &button1, &button2 };
+#endif
+
+SHDebouncer ButtonsDebouncer(10);
+
 #if PLUS > 0
 PlusController plus(&screen, &shRGBLedsWS2812B);
 #endif
 
 #include <SHCommands.h>
 
-void idle(bool critical) {}
+
+void buttonStatusChanged(int buttonId, byte Status) {
+	arqserial.CustomPacketStart(0x03, 2);
+	arqserial.CustomPacketSendByte(buttonId);
+	arqserial.CustomPacketSendByte(Status);
+	arqserial.CustomPacketEnd();
+}
+
+void idle(bool critical) {
+	if (ButtonsDebouncer.Debounce()) {
+		bool changed = false;
+#ifdef INCLUDE_BUTTONS
+		for (int btnIdx = 0; btnIdx < ENABLED_BUTTONS_COUNT; btnIdx++) {
+			BUTTONS[btnIdx]->read();
+		}
+#endif
+	}
+}
 
 void setup()
 {
@@ -55,6 +87,14 @@ void setup()
 	shRGBLedsWS2812B.begin(WS2812B_RGBLEDCOUNT, WS2812B_RIGHTTOLEFT, PLUS == 0);
 	screen.init(PLUS == 0);
 	arqserial.setIdleFunction(idle);
+
+#ifdef INCLUDE_BUTTONS
+	// EXTERNAL BUTTONS INIT
+	for (int btnIdx = 0; btnIdx < ENABLED_BUTTONS_COUNT; btnIdx++) {
+		BUTTONS[btnIdx]->begin(btnIdx + 1, BUTTON_PINS[btnIdx], buttonStatusChanged, 0, 0); // notice the hardcoded zeroes
+	}
+#endif
+
 	#if PLUS > 0
 		plus.init();
 	#endif
